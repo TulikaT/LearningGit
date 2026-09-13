@@ -55,5 +55,41 @@
         reset                    -> moves history pointer, can rewrite history, dangerous on shared branches, useful for local mistakes
         revert                   -> creates a new commit, preserves history, safer for shared branches, useful for published commits
 35. git restore                  -> restore is primarily for restoring file
-36. git restore --staged         ->  
+36. git restore --staged         -> suppose: git add file1, but you dont want to stage it, use: git restore file1, this unstages it
+37. restore vs reset
+        git restore              -> restore file contents / staging state
+        git reset                -> move HEAD / branch history and possibly affect staging/worktree
+38. git stash                    -> working on branch1, have unfinished changes, suddenly you need to switch to another branch. But your changes arent ready to commit. use git stash, git temporarily stores uncomitted changes,                                     bring changes back: git stash pop
+39. git stash pop vs git stash apply
+        git stash pop            -> Restores stash and removes it from stash list if successfully applied
+        git stash apply          -> restores stash but keeps the stash entry
+40. Tags                         -> identify important commits : git tag v1.0.0, git git push origin v1.0.0
+41. github pull request          -> its not a git command, its a github collabortion feature. ( typical workflow:  main -> create branch -> branch1 -> make commits ->push branch -> github -> pull Request -> Review -> Merge )
+42. professional workflow        -> git switch main, git pull, git switch -c branch_name  #make changes -> git status, git add ., git commit -m "commit1", git push -u origin branch_name,  create pr on github, maain
+43. -u means?                    -> get push -u origin branch_name, -u establishes an upstream tracking relationship -> after this simply use: git push, instead of: git push origin branch1
+44. git push vs git pull
+        push                     -> local  => remote
+        pull                     -> remote => local
+45. fetch vs pull
+        fetch                    -> download remote info
+        pull                     -> fetch + integrate
+46. origin vs upstream
+        fork                     -> create own github copy of someone else github repo
+        origin                   -> your fork
+        upstream                 -> original project( whose fork project working in) : git fetch upstream -> gets updates from the original project 
+47. fork vs clone
+        fork                     -> create github copy of someone else's repository  (original github repo  -> fork  -> my github repo)
+        clone                    -> downloads a repo to a computer (github -> git clone -> computer)
+50. fork + clone + pr            -> standard open-source flow ( original project -> fork -> my github repo -> clone -> my computer -> create branch -> make changes -> commit -> push -> pull request -> original project )
+51. git diff                     -> shows changes that havent been staged
+52. git diff vs git status
+        git status               -> what changed/ whats staged
+        git diff                 -> exactly what changed
+        git diff --staged        -> exactly what is staged ( workflow : git status -> git diff -> git add . -> git diff --staged -> git commit )
+53. git show                     -> to inspect a particular commit: git show <commit-id>  -> it shows what that commit changed.
+54. git remote                   -> github repo are called remote repo, git remote: its shows the names/aliases of my remote repositories.  view remote repositories: git remote -v, connecting local repo with github repo:                                          git remote add origin github_repo  This changes the URL associated with an existing remote: git remote set-url origin new_repo_url,   git remote remove origin: This removes the remote                                           configuration from  local repository
+55. working directory vs local repo
+        working directory        -> actual project files, folder on which we work actively in vs code
+        local repository         -> gits saved history, contains gits info about commits, branches, objects
+          
         
